@@ -10,8 +10,8 @@
 		return {
 			css: (t) => {
 				let scale = t * 2 - 1;
-
 				return `
+					filter: saturate(${t}) contrast(${t});
 					transform: scaleY(${scale})
 				`;
 			},
@@ -43,12 +43,12 @@
 	<div
 		in:animate
 		class={cls(
-			'grid aspect-square h-16 w-16 place-items-center border-2 text-5xl font-black',
+			'grid aspect-square h-16 w-16 place-items-center border-2 text-4xl font-bold',
 			state === 'correct'
-				? 'border-emerald-700 bg-emerald-700 text-white'
+				? 'border-green-500 bg-green-500 text-white'
 				: '',
 			state === 'present'
-				? 'border-yellow-600 bg-yellow-600 text-white'
+				? 'border-yellow-500 bg-yellow-500 text-white'
 				: '',
 			state === 'absent' ? ' border-zinc-500 bg-zinc-500 text-white' : '',
 			!state ? 'border-zinc-300 dark:border-zinc-700' : ''
