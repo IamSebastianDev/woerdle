@@ -57,8 +57,8 @@
 							class={cls(
 								'box-border flex min-w-min flex-row items-center justify-end rounded-sm px-2 text-center',
 								i === maxIndex
-									? 'dark:bg-green-500'
-									: '-translate-x-[2px] transform dark:bg-zinc-700'
+									? 'bg-green-500'
+									: '-translate-x-[2px] transform bg-zinc-200 dark:bg-zinc-700'
 							)}
 						>
 							{guess}
@@ -68,7 +68,7 @@
 					<p>No data.</p>
 				{/each}
 			</div>
-			<hr />
+			<hr class="my-4 border-zinc-500" />
 			<Button
 				title="Get a new Wordle"
 				id="refresh"
