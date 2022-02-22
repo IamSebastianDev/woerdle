@@ -16,12 +16,14 @@
 	export let title;
 </script>
 
-<div class="fixed inset-0 isolate z-50 grid place-items-center">
+<div
+	class="fixed inset-0 isolate z-50 flex flex-col items-center justify-center"
+>
 	<section
 		class={cls(
-			'fixed bg-white p-4 dark:bg-zinc-900 dark:text-white',
+			'bg-white p-4 dark:bg-zinc-900 dark:text-white',
 			!$overlay
-				? 'inset-0'
+				? 'fixed inset-0'
 				: 'm-2 rounded-lg border border-zinc-700 shadow-lg'
 		)}
 		transition:fly={{ y: 50, easing: sineInOut, duration: 200 }}
