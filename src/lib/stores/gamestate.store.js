@@ -8,23 +8,40 @@ const word = wordlist[Math.floor(Math.random() * wordlist.length) * 1];
 export const gameState = writable({
 	boardState: ['', '', '', '', '', ''],
 	evaluations: [null, null, null, null, null, null],
+	status: 'inprogress',
 	rowIndex: 0,
 	solution: word,
 });
 
+export const evaluatedKeys = writable({});
 const evalBoardState = ({ boardState, rowIndex, solution, evaluations }) => {
 	const word = boardState[rowIndex];
 
 	const evalulation = [...word].map((char, index) => {
 		if (solution[index] === char) {
+			evaluatedKeys.update((state) => {
+				const newState = { ...state };
+				newState[char] = 'correct';
+				return newState;
+			});
 			return 'correct';
 		}
 
 		if (solution.includes(char)) {
+			evaluatedKeys.update((state) => {
+				const newState = { ...state };
+				newState[char] = 'present';
+				return newState;
+			});
 			return 'present';
 		}
 
 		if (!solution.includes(char)) {
+			evaluatedKeys.update((state) => {
+				const newState = { ...state };
+				newState[char] = 'absent';
+				return newState;
+			});
 			return 'absent';
 		}
 	});
