@@ -1,0 +1,22 @@
+<script>
+	import { joinClassNames as cls } from '../../scripts/joinClassNames.util.js';
+	export let state = undefined;
+</script>
+
+{#key state}
+	<button
+		tabindex="-1"
+		on:click
+		class={cls(
+			'm-0.5 grid grow place-items-center rounded-md text-sm font-bold ',
+			state === 'correct' ? 'bg-emerald-700 text-white' : '',
+			state === 'present' ? 'bg-yellow-600 text-white' : '',
+			state === 'absent' ? 'bg-zinc-500 text-white dark:bg-zinc-700' : '',
+			!state
+				? 'bg-zinc-300 text-zinc-700 dark:bg-zinc-500 dark:text-white'
+				: ''
+		)}
+	>
+		<slot />
+	</button>
+{/key}
