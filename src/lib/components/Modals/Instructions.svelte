@@ -21,7 +21,7 @@
 		<div class="flex flex-col items-start">
 			<p><strong>Examples</strong></p>
 			<div
-				class="my-1 grid origin-left scale-[0.6] transform grid-cols-5 gap-x-2"
+				class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
 			>
 				<Letterbox char="S" state="correct" />
 				<Letterbox char="P" />
@@ -33,7 +33,7 @@
 				The letter S is in the word and in the correct spot.
 			</p>
 			<div
-				class="my-1 grid origin-left scale-[0.6] transform grid-cols-5 gap-x-2"
+				class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
 			>
 				<Letterbox char="S" />
 				<Letterbox char="H" state="present" />
@@ -45,7 +45,7 @@
 				The letter H is in the word but in the wrong spot.
 			</p>
 			<div
-				class="my-1 grid origin-left scale-[0.6] transform grid-cols-5 gap-x-2"
+				class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
 			>
 				<Letterbox char="S" />
 				<Letterbox char="H" />
@@ -57,6 +57,5 @@
 				The letter R is not in the word in any spot.
 			</p>
 		</div>
-		<hr class="my-4 border-zinc-500" />
 	</Modal>
 {/if}
