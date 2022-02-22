@@ -43,7 +43,7 @@
 	<div
 		in:animate
 		class={cls(
-			'grid aspect-square w-16 place-items-center border-2 text-5xl font-black',
+			'grid aspect-square h-16 w-16 place-items-center border-2 text-5xl font-black',
 			state === 'correct'
 				? 'border-emerald-700 bg-emerald-700 text-white'
 				: '',
