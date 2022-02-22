@@ -22,7 +22,7 @@
 			</SquareButton>
 		</li>
 		<li>
-			<SquareButton on:click={openModal.bind(null, 1)}>
+			<SquareButton on:click={openModal.bind(null, 1, false)}>
 				<InfoCircle {...attrs} />
 			</SquareButton>
 		</li>
@@ -30,12 +30,12 @@
 			<h1>Wørdle</h1>
 		</li>
 		<li>
-			<SquareButton>
+			<SquareButton on:click={openModal.bind(null, 2, true)}>
 				<BarChartAlternative {...attrs} />
 			</SquareButton>
 		</li>
 		<li>
-			<SquareButton on:click={openModal.bind(null, 0)}>
+			<SquareButton on:click={openModal.bind(null, 0, false)}>
 				<Gear {...attrs} />
 			</SquareButton>
 		</li>
