@@ -1,4 +1,5 @@
 <script>
+	import Toast from '../UI/Toast.svelte';
 	import Letterbox from './Letterbox.svelte';
 	import {
 		gameState,
@@ -26,15 +27,21 @@
 
 		if (ev.key.length !== 1 || ev.key === ' ') return;
 
-		updateGameState({ type: 'key', payload: ev.key });
+		updateGameState({ type: 'key', payload: ev.key.toLowerCase() });
 		return;
 	};
+
+	$: console.log({ $gameState });
 </script>
 
 <svelte:window on:keydown={handleKey} />
 
-<section id="wordle" class="mt-[8.5vh] flex h-[66.5vh] flex-col justify-center">
-	<div class="mx-auto grid grid-cols-5 grid-rows-6 gap-1">
+<section
+	id="wordle"
+	class="mt-[8.5vh] flex h-[66.5vh] flex-col items-center justify-center"
+>
+	<Toast />
+	<div class="mx-auto grid grid-cols-5 grid-rows-6 gap-[5px]">
 		{#each words as word, i (i)}
 			{#each word as letter, j (j)}
 				<Letterbox
