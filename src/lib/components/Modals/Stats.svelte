@@ -20,7 +20,7 @@
 
 {#if $activeModal === 2}
 	<Modal on:close={closeModal} title="Statistics">
-		<div class="px-4">
+		<div class="p-10">
 			<div class="mb-4 flex space-x-2">
 				<div class="flex-1 text-center">
 					<p class="text-4xl font-bold">{$stats.gamesPlayed}</p>
