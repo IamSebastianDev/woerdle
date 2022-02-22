@@ -3,14 +3,11 @@
 	import Key from '../components/GamePieces/Key.svelte';
 
 	import keyboard from '../data/keyboard.data.js';
-	import {
-		updateGameState,
-		evaluatedKeys,
-	} from '../stores/gamestate.store.js';
+	import { updateGameState, gameState } from '../stores/gamestate.store.js';
 
 	const keyRows = Object.values(keyboard);
-
-	$: getKeyState = (char) => $evaluatedKeys[char];
+	$: ({ evaluatedKeys } = $gameState);
+	$: getKeyState = (char) => evaluatedKeys[char];
 
 	const setKey = (char) => () =>
 		updateGameState({
