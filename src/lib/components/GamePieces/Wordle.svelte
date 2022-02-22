@@ -1,5 +1,5 @@
 <script>
-	import Letterbox from '../components/GamePieces/Letterbox.svelte';
+	import Letterbox from './Letterbox.svelte';
 	import {
 		gameState,
 		updateGameState,
@@ -14,8 +14,6 @@
 	$: ({ evaluations, rowIndex } = $gameState);
 
 	const handleKey = (ev) => {
-		if (ev.key === 'Meta' || ev.key === ' ') return;
-
 		if (ev.key === 'Enter') {
 			updateGameState({ type: 'eval' });
 			return;
@@ -26,6 +24,8 @@
 			return;
 		}
 
+		if (ev.key.length !== 1 || ev.key === ' ') return;
+
 		updateGameState({ type: 'key', payload: ev.key });
 		return;
 	};
@@ -33,7 +33,7 @@
 
 <svelte:window on:keydown={handleKey} />
 
-<section id="wordle" class="mt-16 flex h-[70vh] flex-col justify-center">
+<section id="wordle" class="mt-[8.5vh] flex h-[66.5vh] flex-col justify-center">
 	<div class="mx-auto grid grid-cols-5 grid-rows-6 gap-1">
 		{#each words as word, i (i)}
 			{#each word as letter, j (j)}
