@@ -7,6 +7,8 @@ import { updateStats } from './statistics.store.js';
 
 import { getDefaultData } from '../data/defaults.js';
 import wordlist from '../data/wordlist.data.js';
+const allowedChars = [...new Set(wordlist.join('').split(''))];
+console.log({ allowedChars });
 const word = () => wordlist[Math.floor(Math.random() * wordlist.length) * 1];
 const savedState = JSON.parse(window.localStorage.getItem('wordle-gamestate'));
 
@@ -53,6 +55,10 @@ const updateGameState = ({ type, payload = '' }) => {
 
 	switch (type) {
 		case 'key':
+			if (!allowedChars.includes(payload)) {
+				return;
+			}
+
 			gameState.update((state) => {
 				const { boardState, rowIndex } = state;
 
