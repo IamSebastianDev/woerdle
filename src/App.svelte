@@ -6,6 +6,7 @@
 
 	import Settings from './lib/components/Modals/Settings.svelte';
 	import Instructions from './lib/components/Modals/Instructions.svelte';
+	import Stats from './lib/components/Modals/Stats.svelte';
 </script>
 
 <Navigation />
@@ -13,6 +14,7 @@
 <div id="modals">
 	<Settings />
 	<Instructions />
+	<Stats />
 </div>
 <main>
 	<Wordle />
