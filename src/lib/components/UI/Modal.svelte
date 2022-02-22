@@ -1,8 +1,11 @@
 <script>
+	import { joinClassNames as cls } from '../../scripts/joinClassNames.util.js';
 	import { fly } from 'svelte/transition';
 	import { sineInOut } from 'svelte/easing';
 
 	import { createEventDispatcher } from 'svelte';
+
+	import { overlay } from '../../stores/modal.store.js';
 
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
@@ -13,23 +16,30 @@
 	export let title;
 </script>
 
-<section
-	class="fixed inset-0 z-50 bg-white p-4 dark:bg-zinc-900 dark:text-white"
-	transition:fly={{ y: 50, easing: sineInOut, duration: 200 }}
->
-	<div class="relative mx-auto flex max-w-lg flex-col">
-		<div class="mb-3 flex flex-row justify-between">
-			<h3
-				class="font-mw w-full text-center text-xl font-black tracking-wider"
-			>
-				{title.toUpperCase()}
-			</h3>
-			<div class="absolute right-0">
-				<SquareButton on:click={close}>
-					<X strokeWidth="4" size="16" />
-				</SquareButton>
+<div class="fixed inset-0 isolate z-50 grid place-items-center">
+	<section
+		class={cls(
+			'fixed bg-white p-4 dark:bg-zinc-900 dark:text-white',
+			!$overlay
+				? 'inset-0'
+				: 'm-2 rounded-lg border border-zinc-700 shadow-lg'
+		)}
+		transition:fly={{ y: 50, easing: sineInOut, duration: 200 }}
+	>
+		<div class="relative mx-auto flex max-w-md flex-col">
+			<div class="mb-3 flex flex-row items-center justify-between">
+				<h3
+					class="font-mw mx-12 w-full text-center text-xl font-black tracking-wider"
+				>
+					{title.toUpperCase()}
+				</h3>
+				<div class="absolute right-0">
+					<SquareButton on:click={close}>
+						<X strokeWidth="4" size="16" />
+					</SquareButton>
+				</div>
 			</div>
+			<slot />
 		</div>
-		<slot />
-	</div>
-</section>
+	</section>
+</div>
