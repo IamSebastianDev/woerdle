@@ -10,7 +10,6 @@
 
 	$: values = Object.values($stats.guesses).slice(0, 6);
 	$: maxValue = Math.max(...values);
-	$: maxIndex = values.indexOf(maxValue);
 
 	const refreshHandler = () => {
 		closeModal();
