@@ -56,9 +56,9 @@
 							style:width={`${(100 * guess) / maxValue}%`}
 							class={cls(
 								'box-border flex min-w-min flex-row items-center justify-end rounded-sm px-2 text-center',
-								i === maxIndex
+								guess === maxValue && guess > 0
 									? 'bg-green-500'
-									: '-translate-x-[2px] transform bg-zinc-200 dark:bg-zinc-700'
+									: '-translate-x-[1px] transform bg-zinc-200 dark:bg-zinc-700'
 							)}
 						>
 							{guess}
