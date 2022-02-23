@@ -5,10 +5,10 @@
 		InfoCircle,
 		BarChartAlternative,
 	} from 'svelte-pangolicons';
-	import SquareButton from '../components/UI/SquareButton.svelte';
-	import { toggleNav } from '../stores/menu.store.js';
-	import { openModal } from '../stores/modal.store.js';
-	import { theme } from '../stores/theme.store.js';
+	import SquareButton from '../UI/SquareButton.svelte';
+	import { toggleNav } from '../../stores/menu.store.js';
+	import { openModal } from '../../stores/modal.store.js';
+	import { theme } from '../../stores/theme.store.js';
 	$: attrs = { strokeWidth: $theme === 'dark' ? 2.5 : 2 };
 </script>
 
