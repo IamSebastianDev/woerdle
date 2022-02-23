@@ -8,7 +8,7 @@
 		tabindex="-1"
 		on:click
 		class={cls(
-			'm-0.5 grid grow touch-manipulation select-none appearance-none place-items-center rounded-md text-sm font-bold',
+			'm-0.5 grid flex-1 grow touch-manipulation select-none appearance-none place-items-center rounded-md text-sm font-bold',
 			state === 'correct' ? 'bg-green-500 text-white' : '',
 			state === 'present' ? 'bg-yellow-500 text-white' : '',
 			state === 'absent' ? 'bg-zinc-500 text-white dark:bg-zinc-700' : '',
