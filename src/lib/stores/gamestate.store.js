@@ -32,6 +32,7 @@ const addKeyHandler = (state, payload) => {
 			type: 'display',
 			payload: 'Invalid character.',
 		});
+		return newState;
 	}
 
 	if (boardState[rowIndex].length < 5) {
