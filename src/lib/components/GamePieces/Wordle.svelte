@@ -35,10 +35,10 @@
 
 <section
 	id="wordle"
-	class="mt-16 flex flex-1 flex-col items-center justify-center justify-self-center"
+	class="mt-16 flex flex-1 scale-75 transform flex-col items-center justify-center justify-self-center sm:scale-100"
 >
 	<Toast />
-	<div class="mx-auto grid grid-cols-5 grid-rows-6 gap-[5px]">
+	<div class=" mx-auto grid grid-cols-5 grid-rows-6 gap-[5px]">
 		{#each words as word, i (i)}
 			{#each word as letter, j (j)}
 				<Letterbox
