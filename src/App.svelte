@@ -10,13 +10,13 @@
 </script>
 
 <Navigation />
-<Aside />
+
 <div id="modals">
 	<Settings />
 	<Instructions />
 	<Stats />
 </div>
-<main>
+<main class="flex h-screen flex-col justify-center">
 	<Wordle />
 	<Keyboard />
 </main>
