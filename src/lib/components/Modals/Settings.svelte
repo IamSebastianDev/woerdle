@@ -6,7 +6,7 @@
 
 	import Toggle from '../UI/Toggle.svelte';
 	import Button from '../UI/Button.svelte';
-	import { RefreshCW } from 'svelte-pangolicons';
+	import { RefreshCW, Github } from 'svelte-pangolicons';
 
 	const toggleHardMode = (ev) => {
 		gameState.dispatch({ type: 'mode', payload: ev.target.checked });
@@ -41,10 +41,17 @@
 		>
 			<RefreshCW class="motion-safe:animate-spin" />
 		</Button>
-		<a
-			class="w-full p-4 text-center underline"
-			href="https://github.com/IamSebastianDev/woerdle"
-			rel="noreferrer noopener">Find this Project on Github</a
+		<div
+			class="justify-betweenpy-3 my-3 flex w-full flex-row items-center justify-between"
 		>
+			<div class="mr-4">
+				<a
+					class="text-lg font-bold text-zinc-700 hover:underline dark:text-white"
+					href="https://github.com/IamSebastianDev/woerdle"
+					rel="noreferrer noopener">Find this Project on Github</a
+				>
+			</div>
+			<Github class="mx-3" />
+		</div>
 	</Modal>
 {/if}
