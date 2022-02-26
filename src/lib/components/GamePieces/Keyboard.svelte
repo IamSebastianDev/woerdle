@@ -11,7 +11,7 @@
 
 	const setKey = (char) => () =>
 		gameState.dispatch({
-			type: !['delete', 'eval'].includes(char) ? 'key' : char,
+			type: !['deleteKey', 'eval'].includes(char) ? 'addKey' : char,
 			payload: char,
 		});
 </script>
