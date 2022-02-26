@@ -192,7 +192,7 @@ const evaluateGameState = (state) => {
 		stats.dispatch({ type: 'loss' });
 		toast.dispatch({
 			type: 'display',
-			payload: `Oh boy :( The right solution was "${solution}".`,
+			payload: `Oh boy :( The right solution was ${solution.toUpperCase()}.`,
 		});
 		// open the modal after 2 seconds
 		window.setTimeout(openModal.bind(null, 2, true), 2 * 1000);
