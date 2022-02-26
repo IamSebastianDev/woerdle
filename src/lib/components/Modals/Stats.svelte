@@ -7,6 +7,7 @@
 
 	import { stats } from '../../stores/statistics.store.js';
 	import { gameState } from '../../stores/gamestate.store.js';
+	$: ({ rowIndex, status } = $gameState);
 
 	$: values = Object.values($stats.guesses).slice(0, 6);
 	$: maxValue = Math.max(...values);
@@ -56,7 +57,7 @@
 							style:width={`${(100 * guess) / maxValue}%`}
 							class={cls(
 								'box-border flex min-w-min flex-row items-center justify-end rounded-sm px-2 text-center',
-								$gameState.rowIndex === i
+								status === 'ended' && rowIndex === i
 									? 'bg-green-500'
 									: 'mr-auto bg-zinc-200 dark:bg-zinc-700'
 							)}
