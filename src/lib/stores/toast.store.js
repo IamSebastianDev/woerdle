@@ -1,21 +1,30 @@
 /** @format */
 
 import { writable } from 'svelte/store';
+import { reduceable } from '../scripts/reducable.util';
 
 const timeToDisappear = 10 * 1000;
 
-export const message = writable('');
-export const visible = writable(false);
+const toastStore = writable({ message: null, visible: false });
+const toastReducer = (state, { type, payload }) => {
+	switch (type) {
+		case 'display':
+			return {
+				message: payload,
+				visible: true,
+			};
+		case 'reset':
+			return {
+				message: null,
+				visible: false,
+			};
+	}
 
-export const dispatchToast = (string) => {
-	message.set(string);
-	visible.set(true);
+	window.setTimeout(resetToast, timeToDisappear);
+};
 
-	window.setTimeout(() => {
-		resetToast();
-	}, timeToDisappear);
-};
-export const resetToast = () => {
-	message.set('');
-	visible.set(false);
-};
+export const toast = reduceable(toastReducer, toastStore);
+
+function resetToast() {
+	toast.dispatch({ type: 'reset' });
+}
