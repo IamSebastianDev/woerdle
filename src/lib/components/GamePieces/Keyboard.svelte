@@ -3,23 +3,20 @@
 	import Key from './Key.svelte';
 
 	import keyboard from '../../data/keyboard.data.js';
-	import {
-		updateGameState,
-		gameState,
-	} from '../../stores/gamestate.store.js';
+	import { gameState } from '../../stores/gamestate.store.js';
 
 	const keyRows = Object.values(keyboard);
 	$: ({ evaluatedKeys } = $gameState);
 	$: getKeyState = (char) => evaluatedKeys[char];
 
 	const setKey = (char) => () =>
-		updateGameState({
+		gameState.dispatch({
 			type: !['delete', 'eval'].includes(char) ? 'key' : char,
 			payload: char,
 		});
 </script>
 
-<div class="mx-auto grid h-[25vh] w-full max-w-lg grid-rows-3 py-2">
+<div class="mx-auto grid h-48 w-full max-w-lg grid-rows-3 py-2">
 	{#each keyRows as row}
 		<div class="mx-2 flex h-full flex-row justify-center pb-1 sm:even:mx-9">
 			{#each row as key}
