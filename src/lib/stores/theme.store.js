@@ -1,19 +1,11 @@
 /** @format */
-
-import { writable } from 'svelte/store';
-const storageIdentifier = 'wordle-user-colour-theme';
-const storedTheme = localStorage.getItem(storageIdentifier);
+import { persistable } from '../scripts/persistable.util';
 
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 const userTheme = mediaQuery.matches ? 'dark' : 'light';
 
-export const theme = writable(storedTheme || userTheme);
+export const theme = persistable(userTheme, 'wordle-theme');
 
 theme.subscribe((value) => {
 	document.documentElement.classList.toggle('dark', value === 'dark');
-	localStorage.setItem(storageIdentifier, value);
 });
-
-export const toggleColourTheme = () => {
-	theme.update((state) => (state === 'dark' ? 'light' : 'dark'));
-};
