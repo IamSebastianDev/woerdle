@@ -5,11 +5,13 @@
 		InfoCircle,
 		BarChartAlternative,
 	} from 'svelte-pangolicons';
+	import Aside from './Aside.svelte';
 	import SquareButton from '../UI/SquareButton.svelte';
-	import { toggleNav } from '../../stores/menu.store.js';
 	import { openModal } from '../../stores/modal.store.js';
 	import { theme } from '../../stores/theme.store.js';
 	$: attrs = { strokeWidth: $theme === 'dark' ? 2.5 : 2 };
+
+	let showAside = false;
 </script>
 
 <nav
@@ -17,7 +19,7 @@
 >
 	<ul class="flex h-14 flex-row items-center justify-center">
 		<li>
-			<SquareButton on:click={toggleNav}>
+			<SquareButton on:click={() => (showAside = !showAside)}>
 				<Menu {...attrs} />
 			</SquareButton>
 		</li>
@@ -41,3 +43,6 @@
 		</li>
 	</ul>
 </nav>
+{#if showAside}
+	<Aside on:close={() => (showAside = !showAside)} />
+{/if}
