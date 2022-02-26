@@ -96,7 +96,6 @@ const checkGuesses = (state, word) => {
 
 	for (let i = 0; i < present.length; i++) {
 		const char = present[i];
-		console.log({ letters, char });
 		if (!letters.includes(char)) {
 			toast.dispatch({
 				type: 'display',
