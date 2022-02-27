@@ -2,10 +2,10 @@
 
 import { Writable, writable } from 'svelte/store';
 
-type storeInit = {
+interface storeInit {
 	namespace: string;
 	interface: string;
-};
+}
 
 /**
  * A custom svelte store that will create a store that persists inside the localStorage, and will on pageLoad,
@@ -13,18 +13,23 @@ type storeInit = {
  *
  * @param { * } value - the value the store will be initalized with
  * @param { string } identifier - the identifier used with the choosen storage interface to store the store's value in
- * @param { object? } options - a optional object to further configure the store
+ * @param { storeInit? } options - a optional object to further configure the store
+ * @param { string? } options.namespace - a optional namespace to append to the storage identifier
+ * @param { string? } options.interface - a way to optionally specifiy the storage interface to use. localStorage or
+ * sessionStorge. Defaults to localStorage
  *
- * @returns { import('svelte/store').Writable } a new writable store initalized with the passed or stored value
+ * @returns { Writable } a new writable store initalized with the passed or stored value
  */
 
 export const persistable = (
 	value: any,
 	identifier: string,
-	options?: storeInit
+	options: storeInit = {
+		namespace: '',
+		interface: 'localStorage',
+	}
 ): Writable<any> => {
-	const defaults = { interface: 'localStorage', namespace: undefined };
-	const { namespace, interface: storage } = options || defaults;
+	const { namespace, interface: storage } = options;
 
 	const storageIdentifier = (namespace ? namespace + '__' : '') + identifier;
 	const storedValue =
