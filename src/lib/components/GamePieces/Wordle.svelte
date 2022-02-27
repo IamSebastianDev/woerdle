@@ -27,8 +27,6 @@
 		gameState.dispatch({ type: 'addKey', payload: ev.key.toLowerCase() });
 		return;
 	};
-
-	$: console.log({ $gameState });
 </script>
 
 <svelte:window on:keydown={handleKey} />
