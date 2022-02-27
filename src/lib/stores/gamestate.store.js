@@ -1,7 +1,7 @@
 /** @format */
 
 import { persistable } from '../scripts/persistable.util';
-import { reduceable } from '../scripts/reducable.util.js';
+import { reduceable } from '../scripts/reducable.util';
 import { toast } from './toast.store.js';
 import { openModal } from './modal.store.js';
 import { stats } from './statistics.store.js';
