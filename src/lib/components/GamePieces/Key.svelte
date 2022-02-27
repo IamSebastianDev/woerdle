@@ -1,5 +1,5 @@
 <script>
-	import { joinClassNames as cls } from '../../scripts/joinClassNames.util.js';
+	import { joinClassNames as cls } from '../../scripts/joinClassNames.util';
 	export let state = undefined;
 </script>
 

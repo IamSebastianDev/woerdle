@@ -1,6 +1,6 @@
 /** @format */
 
-import { persistable } from '../scripts/persistable.util.js';
+import { persistable } from '../scripts/persistable.util';
 import { reduceable } from '../scripts/reducable.util.js';
 
 const initializeStats = () => {

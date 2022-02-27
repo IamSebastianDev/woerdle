@@ -1,12 +1,12 @@
 /** @format */
 
-import { persistable } from '../scripts/persistable.util.js';
+import { persistable } from '../scripts/persistable.util';
 import { reduceable } from '../scripts/reducable.util.js';
 import { toast } from './toast.store.js';
 import { openModal } from './modal.store.js';
 import { stats } from './statistics.store.js';
 
-import { getRandomWord } from '../scripts/getRandomWord.util.js';
+import { getRandomWord } from '../scripts/getRandomWord.util';
 import solutions from '../data/solutions.data.js';
 import supports from '../data/supports.data.js';
 

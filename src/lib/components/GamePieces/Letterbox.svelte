@@ -1,5 +1,5 @@
 <script>
-	import { joinClassNames as cls } from '../../scripts/joinClassNames.util.js';
+	import { joinClassNames as cls } from '../../scripts/joinClassNames.util';
 	import { quintOut, backInOut } from 'svelte/easing';
 
 	export let char = '';
@@ -51,7 +51,9 @@
 				? 'border-yellow-500 bg-yellow-500 text-white'
 				: '',
 			state === 'absent' ? ' border-zinc-500 bg-zinc-500 text-white' : '',
-			!state ? 'border-zinc-300 dark:border-zinc-700' : ''
+			!state
+				? 'border-zinc-500 empty:border-zinc-300 empty:dark:border-zinc-700'
+				: ''
 		)}
 	>
 		{char?.toUpperCase()}

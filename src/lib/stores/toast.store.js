@@ -19,12 +19,18 @@ const toastReducer = (state, { type, payload }) => {
 				visible: false,
 			};
 	}
-
-	window.setTimeout(resetToast, timeToDisappear);
 };
 
 export const toast = reduceable(toastReducer, toastStore);
 
-function resetToast() {
-	toast.dispatch({ type: 'reset' });
-}
+// everytime the state is updated to set it visible,
+// set a timer to reset the state to invisible
+
+toast.subscribe((state) => {
+	if (state.visible) {
+		window.setTimeout(
+			() => toast.dispatch({ type: 'reset' }),
+			timeToDisappear
+		);
+	}
+});
