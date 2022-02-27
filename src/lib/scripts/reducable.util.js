@@ -4,6 +4,6 @@ export const reduceable = (reducer, store, initalize) => {
 	store.dispatch = ({ type, payload }) =>
 		store.update((state) => reducer(state, { type, payload }));
 
-	initalize && store.dispatch(initalize);
+	initalize && store.update(initalize);
 	return store;
 };
