@@ -20,13 +20,10 @@
 	{#each keyRows as row}
 		<div class="mx-2 flex h-full flex-row justify-center pb-1 sm:even:mx-9">
 			{#each row as key}
-				<Key
-					on:click={setKey(key.char || key.icon)}
-					state={getKeyState(key.char)}
-				>
-					{#if key.icon === 'eval'}
+				<Key on:click={setKey(key.char)} state={getKeyState(key.char)}>
+					{#if key.char === 'eval'}
 						<FnReturn class="sm:mx-6" />
-					{:else if key.icon === 'delete'}
+					{:else if key.char === 'deleteKey'}
 						<FnBackspace class="sm:mx-6" />
 					{:else}
 						{key.char.toUpperCase()}

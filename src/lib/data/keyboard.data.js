@@ -25,7 +25,7 @@ export default {
 		{ char: 'l' },
 	],
 	row3: [
-		{ icon: 'eval' },
+		{ char: 'eval' },
 		{ char: 'z' },
 		{ char: 'x' },
 		{ char: 'c' },
@@ -33,6 +33,6 @@ export default {
 		{ char: 'b' },
 		{ char: 'n' },
 		{ char: 'm' },
-		{ icon: 'delete' },
+		{ char: 'deleteKey' },
 	],
 };
