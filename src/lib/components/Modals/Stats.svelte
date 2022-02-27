@@ -1,5 +1,5 @@
 <script>
-	import { joinClassNames as cls } from '../../scripts/joinClassNames.util.js';
+	import { joinClassNames as cls } from '../../scripts/joinClassNames.util';
 	import { RefreshCW } from 'svelte-pangolicons';
 	import Modal from '../UI/Modal.svelte';
 	import Button from '../UI/Button.svelte';
