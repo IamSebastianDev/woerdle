@@ -67,7 +67,7 @@
 				<p>No data.</p>
 			{/each}
 		</div>
-		<hr class="my-4 border-zinc-500" />
+		<hr class="mt-4 border-zinc-500" />
 		<Button
 			title="Get a new Wordle"
 			id="refresh"
