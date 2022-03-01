@@ -41,7 +41,7 @@
 		<RefreshCW class="motion-safe:animate-spin" />
 	</Button>
 	<a
-		class="group my-3 flex w-full flex-row items-center justify-between text-lg font-bold"
+		class="group flex w-full flex-row items-center justify-between border-b border-b-zinc-700 py-5 text-lg font-bold"
 		href="https://github.com/IamSebastianDev/woerdle"
 		rel="noreferrer noopener"
 		target="_blank"
@@ -52,7 +52,7 @@
 		<Github class="mx-3" />
 	</a>
 	<a
-		class="group my-3 flex w-full flex-row items-center justify-between text-lg font-bold"
+		class="group flex w-full flex-row items-center justify-between border-b border-b-zinc-700 py-5 text-lg font-bold"
 		href="https://twitter.com/IamSebastianDev"
 		rel="noreferrer noopener"
 		target="_blank"

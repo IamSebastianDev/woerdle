@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="my-1 flex w-full flex-row items-center justify-between border-b border-b-zinc-700 py-3"
+	class="flex w-full flex-row items-center justify-between border-b border-b-zinc-700 py-4"
 >
 	<div class="mr-4">
 		<p class="text-lg font-bold text-zinc-700 dark:text-white">
