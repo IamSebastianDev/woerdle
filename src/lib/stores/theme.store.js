@@ -6,6 +6,6 @@ const userTheme = mediaQuery.matches ? 'dark' : 'light';
 
 export const theme = persistable(userTheme, 'wordle-theme');
 
-theme.subscribe((value) => {
-	document.documentElement.classList.toggle('dark', value === 'dark');
+theme.subscribe((theme) => {
+	document.documentElement.classList.toggle('dark', theme === 'dark');
 });
