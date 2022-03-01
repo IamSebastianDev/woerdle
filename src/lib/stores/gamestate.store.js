@@ -3,7 +3,7 @@
 import { persistable } from '../scripts/persistable.util';
 import { reduceable } from '../scripts/reducable.util';
 import { toast } from './toast.store.js';
-import { openModal } from './modal.store.js';
+import { modal } from './modal.store.js';
 import { stats } from './statistics.store.js';
 
 import { getRandomWord } from '../scripts/getRandomWord.util';
@@ -46,7 +46,7 @@ const deleteKeyHandler = (state) => {
 	const { rowIndex, boardState, status } = state;
 	const newState = { ...state };
 
-	if (status === 'ended') return newState;
+	if (status !== 'in__progress') return newState;
 
 	newState.boardState[rowIndex] = boardState[rowIndex].slice(0, -1);
 	return newState;
@@ -139,7 +139,7 @@ const evaluateGameState = (state) => {
 	const newState = { ...state };
 
 	// if the game status is 'ended', return with the existing state
-	if (status === 'ended') return newState;
+	if (status !== 'in__progress') return newState;
 
 	/**
 	 * Get the currently set word and evaluate it's validity
@@ -179,13 +179,16 @@ const evaluateGameState = (state) => {
 
 	// Evaluate the win / loss state of the current gameState
 
-	if (word === solution && status !== 'ended') {
+	if (word === solution && status === 'in__progress') {
 		stats.dispatch({ type: 'win', payload: rowIndex + 1 });
 		toast.dispatch({ type: 'display', payload: 'You won!' });
 
 		// open the modal after 2 seconds
-		window.setTimeout(openModal.bind(null, 2, true), 2 * 1000);
-		return { ...state, status: 'ended', evaluations };
+		window.setTimeout(
+			() => modal.dispatch({ type: 'stats', payload: { overlay: true } }),
+			2 * 1000
+		);
+		return { ...state, status: 'ended__win', evaluations };
 	}
 
 	if (rowIndex + 1 === 6) {
@@ -195,8 +198,11 @@ const evaluateGameState = (state) => {
 			payload: `Oh boy :( The right solution was ${solution.toUpperCase()}.`,
 		});
 		// open the modal after 2 seconds
-		window.setTimeout(openModal.bind(null, 2, true), 2 * 1000);
-		return { ...state, status: 'ended', evaluations };
+		window.setTimeout(
+			() => modal.dispatch({ type: 'stats', payload: { overlay: true } }),
+			2 * 1000
+		);
+		return { ...state, status: 'ended__loss', evaluations };
 	}
 
 	// if the game is neither lost nor won, return the current with the new evaluations

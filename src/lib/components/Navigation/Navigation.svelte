@@ -7,7 +7,7 @@
 	} from 'svelte-pangolicons';
 	import Aside from './Aside.svelte';
 	import SquareButton from '../UI/SquareButton.svelte';
-	import { openModal } from '../../stores/modal.store.js';
+	import { modal } from '../../stores/modal.store.js';
 	import { theme } from '../../stores/theme.store.js';
 	$: attrs = { strokeWidth: $theme === 'dark' ? 2.5 : 2 };
 
@@ -24,7 +24,9 @@
 			</SquareButton>
 		</li>
 		<li>
-			<SquareButton on:click={openModal.bind(null, 1, false)}>
+			<SquareButton
+				on:click={() => modal.dispatch({ type: 'instructions' })}
+			>
 				<InfoCircle {...attrs} />
 			</SquareButton>
 		</li>
@@ -32,12 +34,18 @@
 			<h1>Wørdle</h1>
 		</li>
 		<li>
-			<SquareButton on:click={openModal.bind(null, 2, true)}>
+			<SquareButton
+				on:click={() =>
+					modal.dispatch({
+						type: 'stats',
+						payload: { overlay: true },
+					})}
+			>
 				<BarChartAlternative {...attrs} />
 			</SquareButton>
 		</li>
 		<li>
-			<SquareButton on:click={openModal.bind(null, 0, false)}>
+			<SquareButton on:click={() => modal.dispatch({ type: 'settings' })}>
 				<Gear {...attrs} />
 			</SquareButton>
 		</li>

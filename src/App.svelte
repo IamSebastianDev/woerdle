@@ -1,21 +1,13 @@
 <script>
 	import Navigation from './lib/components/Navigation/Navigation.svelte';
-	import Aside from './lib/components/Navigation/Aside.svelte';
 	import Wordle from './lib/components/GamePieces/Wordle.svelte';
 	import Keyboard from './lib/components/GamePieces/Keyboard.svelte';
-
-	import Settings from './lib/components/Modals/Settings.svelte';
-	import Instructions from './lib/components/Modals/Instructions.svelte';
-	import Stats from './lib/components/Modals/Stats.svelte';
+	import MoController from './lib/components/Modals/Controller.svelte';
 </script>
 
 <Navigation />
 
-<div id="modals">
-	<Settings />
-	<Instructions />
-	<Stats />
-</div>
+<MoController />
 <main class="flex h-screen flex-col justify-center">
 	<Wordle />
 	<Keyboard />

@@ -5,7 +5,7 @@
 
 	import { createEventDispatcher } from 'svelte';
 
-	import { overlay } from '../../stores/modal.store.js';
+	import { modal } from '../../stores/modal.store.js';
 
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
@@ -22,7 +22,7 @@
 	<section
 		class={cls(
 			'bg-white p-4 dark:bg-zinc-900 dark:text-white',
-			!$overlay
+			!$modal.overlay
 				? 'fixed inset-0'
 				: 'm-2 rounded-lg border border-zinc-700 shadow-lg'
 		)}
