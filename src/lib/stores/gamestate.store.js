@@ -118,7 +118,9 @@ const checkWordLetters = (state, word) => {
 		}
 
 		if (solution.includes(char)) {
-			evaluatedKeys[char] = 'present';
+			// check if the key is not already marked as correct, so it won't be downgraded.
+			evaluatedKeys[char] !== 'correct' &&
+				(evaluatedKeys[char] = 'present');
 			return 'present';
 		}
 
