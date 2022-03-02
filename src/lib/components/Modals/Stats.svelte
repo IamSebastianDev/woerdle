@@ -11,6 +11,8 @@
 
 	$: values = Object.values($stats.guesses).slice(0, 6);
 	$: maxValue = Math.max(...values);
+	$: average =
+		values.reduce((a, b, i) => a + b * (i + 1), 0) / $stats.gamesWon;
 
 	const refreshHandler = () => {
 		modal.dispatch({ type: 'close' });
@@ -20,23 +22,23 @@
 
 <Modal on:close={() => modal.dispatch({ type: 'close' })} title="Statistics">
 	<div class="p-10">
-		<div class="mb-4 flex space-x-2">
-			<div class="flex-1 text-center">
+		<div class="mb-4 flex space-x-2 text-center">
+			<div class="flex-1">
 				<p class="text-4xl font-bold">{$stats.gamesPlayed}</p>
 				<p class="text-xs">Played</p>
 			</div>
-			<div class="flex-1 text-center">
+			<div class="flex-1">
 				<p class="text-4xl font-bold">
 					{Math.floor((100 * $stats.gamesWon) / $stats.gamesPlayed) ||
 						0}
 				</p>
 				<p class="text-xs">Win %</p>
 			</div>
-			<div class="flex-1 text-center">
+			<div class="flex-1">
 				<p class="text-4xl font-bold">{$stats.currentStreak}</p>
 				<p class="text-xs">Current Streak</p>
 			</div>
-			<div class="flex-1 text-center">
+			<div class="flex-1">
 				<p class="text-4xl font-bold">{$stats.maxStreak}</p>
 				<p class="text-xs">Max Streak</p>
 			</div>
@@ -66,6 +68,10 @@
 			{:else}
 				<p>No data.</p>
 			{/each}
+		</div>
+		<div class="flex justify-center space-x-4 text-sm">
+			<p>Failed: <strong>{$stats.guesses.failed}</strong></p>
+			<p>Average Ø: <strong>{average.toFixed(2)}</strong></p>
 		</div>
 		<hr class="mt-4 border-zinc-500" />
 		<Button
