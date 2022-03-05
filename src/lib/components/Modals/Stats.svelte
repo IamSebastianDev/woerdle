@@ -20,7 +20,7 @@
 	};
 </script>
 
-<Modal on:close={() => modal.dispatch({ type: 'close' })} title="Statistics">
+<Modal on:close={() => modal.dispatch({ type: 'close' })} title="Statistics 🏆">
 	<div class="p-10">
 		<div class="mb-4 flex space-x-2 text-center">
 			<div class="flex-1">
@@ -56,7 +56,7 @@
 					<span
 						style:width={`${(100 * guess) / maxValue}%`}
 						class={cls(
-							'box-border flex min-w-min flex-row items-center justify-end rounded-sm px-2 text-center',
+							'box-border flex min-w-[9.25%] flex-row items-center justify-end rounded-sm px-2 text-center',
 							status === 'ended__win' && rowIndex === i
 								? 'bg-green-500'
 								: 'mr-auto bg-zinc-200 dark:bg-zinc-700'
