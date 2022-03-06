@@ -6,11 +6,6 @@ export default {
 	phrases: {
 		settings: {
 			heading: 'Settings',
-			localeSelect: {
-				heading: 'Language',
-				description:
-					'You can change the language between English and German.',
-			},
 			hardMode: {
 				heading: 'Hard Mode',
 				description:
@@ -24,6 +19,7 @@ export default {
 				github: 'Find this Project on Github',
 				twitter: 'Find me on Twitter',
 			},
+			locale: 'Choose your language:',
 		},
 		instructions: {
 			heading: 'How to play',
@@ -32,10 +28,25 @@ export default {
 			line3: 'After each guess, the color of the tiles will change to show how close your guess was to the word.',
 			examples: {
 				heading: 'Examples',
-				line1: 'The letter S is in the word and in the correct spot.',
-				line2: 'The letter H is in the word but in the wrong spot.',
-				line3: 'The letter R is not in the word in any spot.',
+				line1: 'The letter {{letter}} is in the word and in the correct spot.',
+				line2: 'The letter {{letter}} is in the word but in the wrong spot.',
+				line3: 'The letter {{letter}} is not in the word in any spot.',
 			},
+		},
+		stats: {
+			heading: 'Statistics 🏆',
+			played: 'Played',
+			percentage: 'Win %',
+			current: 'Current Streak',
+			max: 'Max Streak',
+			guesses: 'Guess distribution',
+			nodata: 'No data',
+			failed: 'Failed: ',
+			average: 'Average Ø: ',
+		},
+		refresh: {
+			heading: 'Get a new Wordle',
+			description: 'Waiting 24 hours is boring',
 		},
 	},
 };
