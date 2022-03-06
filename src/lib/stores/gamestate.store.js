@@ -1,5 +1,8 @@
 /** @format */
 
+import { i18n } from '../i18n/i18n.store';
+const { currentLocale } = i18n;
+import { get } from 'svelte/store';
 import { persistable } from '../scripts/persistable.util';
 import { reduceable } from '../scripts/reducable.util';
 import { toast } from './toast.store.js';
@@ -7,10 +10,25 @@ import { modal } from './modal.store.js';
 import { stats } from './statistics.store.js';
 
 import { getRandomWord } from '../scripts/getRandomWord.util';
-import solutions from '../data/solutions.data.js';
-import supports from '../data/supports.data.js';
+import solutionsEN from '../data/solutions.en.data.js';
+import supportsEN from '../data/supports.en.data.js';
+import solutionsDE from '../data/solutions.de.data.js';
+import supportsDE from '../data/supports.de.data.js';
 
-const allowedChars = [...new Set(supports.join('').split(''))];
+/** @todo - Refractor this section into it's own file with method to retrieve the current supports/solutions */
+
+const supports = {
+	de: supportsDE.map((word) => word.toLowerCase()),
+	en: supportsEN,
+};
+const solutions = {
+	de: solutionsDE.map((word) => word.toLowerCase()),
+	en: solutionsEN,
+};
+
+const allowedChars = [
+	...new Set(supports[get(currentLocale)].join('').split('')),
+];
 const initalizeGamestate = (solution, hardmode = false) => {
 	return {
 		boardState: ['', '', '', '', '', ''],
@@ -163,7 +181,10 @@ const evaluateGameState = (state) => {
 		return newState;
 	}
 
-	if (!solutions.includes(word) && !supports.includes(word)) {
+	if (
+		!solutions[get(currentLocale)].includes(word) &&
+		!supports[get(currentLocale)].includes(word)
+	) {
 		toast.dispatch({
 			type: 'display',
 			payload: 'Word not in list.',
@@ -218,7 +239,10 @@ const gameStateReducer = (state, { type, payload }) => {
 
 	switch (type) {
 		case 'reset':
-			return initalizeGamestate(getRandomWord(solutions), state.hardmode);
+			return initalizeGamestate(
+				getRandomWord(solutions[get(currentLocale)]),
+				state.hardmode
+			);
 		case 'addKey':
 			return addKeyHandler(state, payload);
 		case 'deleteKey':
@@ -233,7 +257,7 @@ const gameStateReducer = (state, { type, payload }) => {
 };
 
 const stateStore = persistable(
-	initalizeGamestate(getRandomWord(solutions)),
+	initalizeGamestate(getRandomWord(solutions[get(currentLocale)])),
 	'wordle-state'
 );
 export const gameState = reduceable(gameStateReducer, stateStore);
