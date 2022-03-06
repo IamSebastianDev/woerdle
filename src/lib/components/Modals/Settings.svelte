@@ -1,6 +1,6 @@
 <script>
 	import { i18n } from '../../i18n/i18n.store';
-	$: ({ t, currentLocale } = i18n);
+	$: ({ t } = i18n);
 
 	import Modal from '../UI/Modal.svelte';
 	import { modal } from '../../stores/modal.store.js';
@@ -9,6 +9,7 @@
 
 	import Toggle from '../UI/Toggle.svelte';
 	import Button from '../UI/Button.svelte';
+	import Locale from '../UI/Locale.svelte';
 	import { RefreshCW, Github, Twitter } from 'svelte-pangolicons';
 
 	const toggleHardMode = (ev) => {
@@ -17,10 +18,6 @@
 
 	const toggleTheme = (ev) => {
 		theme.update((state) => (state === 'dark' ? 'light' : 'dark'));
-	};
-
-	const toggleLocale = (ev) => {
-		currentLocale.set(ev.target.checked ? 'en' : 'de');
 	};
 </script>
 
@@ -42,21 +39,17 @@
 		description={$t('settings.hardMode.description')}
 		on:change={toggleHardMode}
 	/>
-	<Toggle
-		title={$t('settings.localeSelect.heading')}
-		id="locale"
-		checked={$currentLocale === 'en'}
-		description={$t('settings.localeSelect.description')}
-		on:change={toggleLocale}
-	/>
 	<Button
-		title="Get a new Wordle"
+		title={$t('refresh.heading')}
 		id="refresh"
-		description="Waiting 24 hours is boring"
+		description={$t('refresh.description')}
 		on:click={() => gameState.dispatch({ type: 'reset' })}
 	>
 		<RefreshCW class="motion-safe:animate-spin" />
 	</Button>
+	<Locale>
+		{$t('settings.locale')}
+	</Locale>
 	<a
 		class="group flex w-full flex-row items-center justify-between border-b border-b-zinc-700 py-5 text-lg font-bold"
 		href="https://github.com/IamSebastianDev/woerdle"

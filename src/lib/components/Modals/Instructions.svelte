@@ -1,4 +1,7 @@
 <script>
+	import { i18n } from '../../i18n/i18n.store';
+	$: ({ t, currentLocale } = i18n);
+
 	import Modal from '../UI/Modal.svelte';
 	import Letterbox from '../GamePieces/Letterbox.svelte';
 	import { modal, initalModal } from '../../stores/modal.store';
@@ -9,21 +12,15 @@
 	};
 </script>
 
-<Modal on:close={closeHandler} title="How to play">
+<Modal on:close={closeHandler} title={$t('instructions.heading')}>
 	<div class="mx-auto mt-2 space-y-3 text-sm">
-		<p>Guess the <strong>WORDLE</strong> in six tries.</p>
-		<p>
-			Each guess must be a valid five-letter word. Hit the enter button to
-			submit.
-		</p>
-		<p>
-			After each guess, the color of the tiles will change to show how
-			close your guess was to the word.
-		</p>
+		<p>{@html $t('instructions.line1')}</p>
+		<p>{$t('instructions.line2')}</p>
+		<p>{$t('instructions.line3')}</p>
 	</div>
 	<hr class="my-4 border-zinc-500" />
 	<div class="flex flex-col items-start">
-		<p><strong>Examples</strong></p>
+		<p><strong>{$t('instructions.examples.heading')}</strong></p>
 		<div
 			class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
 		>
@@ -34,7 +31,7 @@
 			<Letterbox char="N" />
 		</div>
 		<p class="mt-1 mb-3 text-sm">
-			The letter S is in the word and in the correct spot.
+			{$t('instructions.examples.line1', { letter: 'S' })}
 		</p>
 		<div
 			class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
@@ -46,7 +43,7 @@
 			<Letterbox char="T" />
 		</div>
 		<p class="mt-1 mb-3 text-sm">
-			The letter H is in the word but in the wrong spot.
+			{$t('instructions.examples.line2', { letter: 'H' })}
 		</p>
 		<div
 			class="my-1 grid origin-left scale-75 transform grid-cols-5 gap-x-2"
@@ -58,7 +55,7 @@
 			<Letterbox char="E" />
 		</div>
 		<p class="mt-1 mb-3 text-sm">
-			The letter R is not in the word in any spot.
+			{$t('instructions.examples.line3', { letter: 'R' })}
 		</p>
 	</div>
 </Modal>
