@@ -20,8 +20,8 @@ export default {
 				description: 'Wähle zwischen einem dunklen und hellen Theme',
 			},
 			links: {
-				github: 'Find this Project on Github',
-				twitter: 'Find me on Twitter',
+				github: 'Schau dir den Quellcode auf Github an.',
+				twitter: 'Finde mich auf Twitter.',
 			},
 			locale: 'Wähle deine Sprache:',
 		},
