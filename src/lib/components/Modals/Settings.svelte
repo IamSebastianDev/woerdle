@@ -1,4 +1,7 @@
 <script>
+	import { i18n } from '../../i18n/i18n.store';
+	$: ({ t, currentLocale } = i18n);
+
 	import Modal from '../UI/Modal.svelte';
 	import { modal } from '../../stores/modal.store.js';
 	import { gameState } from '../../stores/gamestate.store.js';
@@ -15,22 +18,36 @@
 	const toggleTheme = (ev) => {
 		theme.update((state) => (state === 'dark' ? 'light' : 'dark'));
 	};
+
+	const toggleLocale = (ev) => {
+		currentLocale.set(ev.target.checked ? 'en' : 'de');
+	};
 </script>
 
-<Modal on:close={() => modal.dispatch({ type: 'close' })} title="Settings">
+<Modal
+	on:close={() => modal.dispatch({ type: 'close' })}
+	title={$t('settings.heading')}
+>
 	<Toggle
-		title="Dark Theme"
+		title={$t('settings.theme.heading')}
 		id="theme"
 		checked={$theme === 'dark'}
-		description="Toggle between dark & light theme"
+		description={$t('settings.theme.description')}
 		on:change={toggleTheme}
 	/>
 	<Toggle
-		title="Hard Mode"
-		id="theme"
+		title={$t('settings.hardMode.heading')}
+		id="hardmode"
 		checked={$gameState.hardmode}
-		description="Any revealed hints must be used in subsequent guesses"
+		description={$t('settings.hardMode.description')}
 		on:change={toggleHardMode}
+	/>
+	<Toggle
+		title={$t('settings.localeSelect.heading')}
+		id="locale"
+		checked={$currentLocale === 'en'}
+		description={$t('settings.localeSelect.description')}
+		on:change={toggleLocale}
 	/>
 	<Button
 		title="Get a new Wordle"
@@ -47,7 +64,7 @@
 		target="_blank"
 	>
 		<p class="mr-4 text-zinc-700 group-hover:underline dark:text-white">
-			Find this Project on Github
+			{$t('settings.links.github')}
 		</p>
 		<Github class="mx-3" />
 	</a>
@@ -58,7 +75,7 @@
 		target="_blank"
 	>
 		<p class="mr-4 text-zinc-700 group-hover:underline dark:text-white">
-			Find me on Twitter
+			{$t('settings.links.twitter')}
 		</p>
 		<Twitter class="mx-3" />
 	</a>
