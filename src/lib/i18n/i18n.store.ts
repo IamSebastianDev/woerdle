@@ -12,15 +12,18 @@ const engine = (dicts: Dict[]): I18n => {
 
 	const __localeCodes = dicts.map(({ code }) => code);
 	const __matchedLocale = matchLocale(__localeCodes);
-	console.log({ __matchedLocale });
 
 	const currentLocale: Writable<string> = writable(__matchedLocale);
+	currentLocale.subscribe((state) =>
+		window.localStorage.setItem('wordle-locale', state)
+	);
 	const currentDict = derived(currentLocale, (currentLocale) =>
 		dicts.find(({ code }) => code === currentLocale)
 	);
 
 	// create the reactive translate method
-
+	if (!currentDict) throw new Error('i18n: No dictionary was found');
+	/// @ts-ignore
 	const t = derived(currentDict, (currentDict) => translator(currentDict));
 
 	return { t, currentLocale };
