@@ -8,7 +8,7 @@ export default {
 			heading: 'Einstellungen',
 			localeSelect: {
 				heading: 'Sprache',
-				description: 'Wähle zwischen deutscher und englischer sprache',
+				description: 'Wähle zwischen deutscher oder englischer Sprache',
 			},
 			hardMode: {
 				heading: 'Schwerer Modus',
@@ -43,13 +43,13 @@ export default {
 			percentage: 'Gewinn %',
 			current: 'Momentane Serie',
 			max: 'Maximale Serie',
-			guesses: 'Versuchs verteilung',
+			guesses: 'Versuche',
 			nodata: 'Keine daten',
 			failed: 'Fehlgeschlagen: ',
 			average: 'Durchschitt Ø: ',
 		},
 		refresh: {
-			heading: 'Kreire ein neues Wordle',
+			heading: 'Generiere ein neues Wordle',
 			description: '24 Stunden zu warten ist langweilig!',
 		},
 	},
