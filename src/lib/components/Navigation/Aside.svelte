@@ -15,7 +15,7 @@
 
 <aside
 	transition:fly={{ easing: sineInOut, x: -500, duration: 350 }}
-	class="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-full max-w-sm flex-col border-r border-zinc-200 px-4 pt-20 pb-4 shadow-xl dark:border-zinc-800 dark:bg-zinc-900"
+	class="fixed left-0 top-0 bottom-0 z-50 flex h-screen w-full max-w-sm flex-col border-r border-zinc-200 px-4 pt-20 pb-4 shadow-xl dark:border-zinc-800 dark:bg-zinc-900"
 >
 	<div class="flex flex-row justify-between">
 		<h3 class="font-mw text-xl font-black">Wørdle</h3>

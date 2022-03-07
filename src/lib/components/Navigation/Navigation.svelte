@@ -15,7 +15,7 @@
 </script>
 
 <nav
-	class="fixed top-0 z-40 w-screen border-b border-b-zinc-500 bg-white px-4 dark:bg-zinc-900"
+	class="fixed top-0 z-30 w-screen border-b border-b-zinc-500 bg-white px-4 dark:bg-zinc-900"
 >
 	<ul class="flex h-14 flex-row items-center justify-center">
 		<li>
