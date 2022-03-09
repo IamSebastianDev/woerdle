@@ -28,13 +28,13 @@ export default {
 		instructions: {
 			heading: 'So wird gespielt',
 			line1: 'Errate das <strong>WORDLE</strong> innerhalb 6 versuchen.',
-			line2: 'Jedes Wort muss ein gültiges Wort mit 5 Buchstaben sein. Drücke enter um die Lösung zu überprüfen.',
-			line3: 'Nach jeder runde ändern sich die Farben der Kacheln um dir Hinweise auf deinen Fortschritt zu geben.',
+			line2: 'Jedes Wordle muss ein gültiges Wort mit 5 Buchstaben sein. Drücke ENTER um die Lösung zu überprüfen.',
+			line3: 'Nach jeder Runde ändern sich die Farben der Kacheln um dir Hinweise auf deinen Fortschritt zu geben.',
 			examples: {
 				heading: 'Beispiel',
 				line1: 'Der Buchstabe {{letter}} ist am richtigen Platz.',
-				line2: 'Der Buchstabe {{letter}} ist teil des Wort, aber am falschen Platz.',
-				line3: 'Der Buchstabe {{letter}} ist nicht teil des Wortes.',
+				line2: 'Der Buchstabe {{letter}} ist Teil des Wort, aber am falschen Platz.',
+				line3: 'Der Buchstabe {{letter}} ist nicht Teil des Wortes.',
 			},
 		},
 		stats: {
