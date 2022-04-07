@@ -55,5 +55,5 @@ const statisticsReducer = (state, { type, payload = '' }) => {
 	return newState;
 };
 
-const persistantStats = persistable(initializeStats(), 'wordle-stats');
+const persistantStats = persistable(initializeStats(), 'wordle-statistics');
 export const stats = reduceable(statisticsReducer, persistantStats);
