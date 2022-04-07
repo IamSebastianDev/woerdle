@@ -55,5 +55,12 @@ const statisticsReducer = (state, { type, payload = '' }) => {
 	return newState;
 };
 
-const persistantStats = persistable(initializeStats(), 'wordle-statistics');
+const currentStore = window.localStorage.getItem('wordle-stats');
+if (currentStore)
+	window.localStorage.setItem(
+		'wordle-stats',
+		JSON.stringify({ history: [], ...JSON.parse(currentStore) })
+	);
+
+const persistantStats = persistable(initializeStats(), 'wordle-stats');
 export const stats = reduceable(statisticsReducer, persistantStats);
