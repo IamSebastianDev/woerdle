@@ -203,7 +203,10 @@ const evaluateGameState = (state) => {
 	// Evaluate the win / loss state of the current gameState
 
 	if (word === solution && status === 'in__progress') {
-		stats.dispatch({ type: 'win', payload: rowIndex + 1 });
+		stats.dispatch({
+			type: 'win',
+			payload: { guesses: rowIndex + 1, solution },
+		});
 		toast.dispatch({ type: 'display', payload: 'You won!' });
 
 		// open the modal after 2 seconds
@@ -215,7 +218,7 @@ const evaluateGameState = (state) => {
 	}
 
 	if (rowIndex + 1 === 6) {
-		stats.dispatch({ type: 'loss' });
+		stats.dispatch({ type: 'loss', payload: { solution } });
 		toast.dispatch({
 			type: 'display',
 			payload: `Oh boy :( The right solution was ${solution.toUpperCase()}.`,
